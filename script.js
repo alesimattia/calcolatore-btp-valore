@@ -118,9 +118,13 @@
         const loyaltyTax = loyaltyGross * TAX_RATE;
         const loyaltyNet = loyaltyGross - loyaltyTax;
 
-        // Totale futuro
+        // Imposte totali e totale futuro
+        const totalTax = taxOnInterest + loyaltyTax;
         const totalFutureValue = capital + netInterest + loyaltyNet;
         const totalNetGain = netInterest + loyaltyNet;
+
+        // Mesi di detenzione (per metriche)
+        const holdingMonths = (withdrawYear - 2026) * 12 + (withdrawMonth - 2);
 
         // Percentuale periodo trascorso (per la barra)
         const totalDays = daysBetween(START_DATE, MATURITY_DATE);
@@ -136,11 +140,13 @@
             loyaltyGross: loyaltyGross,
             loyaltyTax: loyaltyTax,
             loyaltyNet: loyaltyNet,
+            totalTax: totalTax,
             capitalReturned: capital,
             totalFutureValue: totalFutureValue,
             totalNetGain: totalNetGain,
             isAtMaturity: isAtMaturity,
             completedQuarters: completedQuarters,
+            holdingMonths: holdingMonths,
             progressPercent: progressPercent
         };
     }
@@ -249,7 +255,18 @@
         }
 
         document.getElementById('bkCapital').textContent = formatCurrency(result.capitalReturned);
+        document.getElementById('bkTotalTax').textContent = '− ' + formatCurrency(result.totalTax);
         document.getElementById('bkTotal').textContent = formatCurrency(result.totalFutureValue);
+
+        // Metriche di redditività
+        const roi = result.capitalReturned > 0 ? (result.totalNetGain / result.capitalReturned) * 100 : 0;
+        const holdingYears = result.holdingMonths > 0 ? result.holdingMonths / 12 : 1;
+        const annualReturn = roi / holdingYears;
+        const monthlyGain = result.holdingMonths > 0 ? result.totalNetGain / result.holdingMonths : 0;
+
+        document.getElementById('metricRoi').textContent = roi.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+        document.getElementById('metricAnnual').textContent = annualReturn.toLocaleString('it-IT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '%';
+        document.getElementById('metricMonthly').textContent = formatCurrency(monthlyGain);
 
         // Barra temporale
         timelineFill.style.width = result.progressPercent.toFixed(1) + '%';

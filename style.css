@@ -453,12 +453,12 @@ header .subtitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 7px 0;
+    padding: 5px 0 9px 0;
     font-size: 0.9rem;
 }
 
 .breakdown-row.sub {
-    padding-left: 18px;
+    padding-left: 21px;
     color: var(--text-light);
     font-size: 0.82rem;
 }
@@ -480,6 +480,38 @@ header .subtitle {
     font-weight: 800;
     font-size: 1.1rem;
     color: var(--primary);
+}
+
+/* Card metriche di redditività */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.metric-card {
+    background: var(--primary-bg);
+    border-radius: 8px;
+    padding: 12px 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.metric-value {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--success);
+}
+
+.metric-label {
+    font-size: 0.72rem;
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
 /* === DISCLAIMER === */
