@@ -1,0 +1,547 @@
+:root {
+    --primary: #1a3a5c;
+    --primary-light: #2c5f8a;
+    --primary-bg: #eaf0f7;
+    --accent: #b8941e;
+    --accent-light: #f5ecd0;
+    --bg: #f3f5f8;
+    --card: #ffffff;
+    --text: #1e2a36;
+    --text-light: #5f6d7a;
+    --success: #1a7d42;
+    --success-bg: #e6f5ec;
+    --warning: #c95e10;
+    --warning-bg: #fef3e8;
+    --danger: #c0392b;
+    --border: #dce1e7;
+    --shadow: 0 2px 16px rgba(0,0,0,0.07);
+    --radius: 12px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* === HEADER === */
+header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: #fff;
+    padding: 44px 20px 56px;
+    text-align: center;
+    position: relative;
+}
+
+header::after {
+    content: '';
+    display: block;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, #009246 33.33%, #ffffff 33.33%, #ffffff 66.66%, #ce2b37 66.66%);
+}
+
+header h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.88;
+    font-weight: 400;
+}
+
+.header-badges {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.header-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+/* === SEZIONE TASSI === */
+.rates-section {
+    margin-top: -32px;
+    position: relative;
+    z-index: 2;
+}
+
+.rates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.rate-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 26px 16px 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.rate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+}
+
+.rate-card:nth-child(1)::before { background: var(--primary); }
+.rate-card:nth-child(2)::before { background: var(--primary-light); }
+.rate-card:nth-child(3)::before { background: var(--accent); }
+
+.rate-card .period {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rate-card .rate {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1.1;
+}
+
+.rate-card:nth-child(3) .rate { color: var(--accent); }
+
+.rate-card .rate-label {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.rate-arrow {
+    display: none;
+}
+
+/* Chip informativi sotto i tassi */
+.info-chips {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.info-chip {
+    background: var(--card);
+    padding: 8px 18px;
+    border-radius: 24px;
+    font-size: 0.82rem;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    color: var(--text-light);
+}
+
+.info-chip strong {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Spiegazione tassi */
+.rates-explanation {
+    margin-top: 20px;
+    background: var(--primary-bg);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.65;
+}
+
+.rates-explanation p {
+    margin-bottom: 6px;
+}
+
+.rates-explanation p:last-child {
+    margin-bottom: 0;
+}
+
+/* === CALCOLATORE === */
+.calc-section {
+    margin-top: 28px;
+}
+
+.calc-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+}
+
+.calc-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 7px;
+    color: var(--text);
+    text-align: center;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .prefix {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 13px 18px 13px 36px;
+    text-align: center;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: border-color 0.25s;
+    outline: none;
+    background: #fff;
+    color: var(--text);
+}
+
+.input-wrapper input:focus {
+    border-color: var(--primary);
+}
+
+.input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+.input-group select {
+    width: 100%;
+    padding: 13px 16px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: #fff;
+    color: var(--text);
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.25s;
+    appearance: auto;
+}
+
+.input-group select:focus {
+    border-color: var(--primary);
+}
+
+.validation-msg {
+    font-size: 0.82rem;
+    margin-top: 5px;
+    min-height: 1.2em;
+    font-weight: 500;
+}
+
+.validation-msg.error { color: var(--danger); }
+.validation-msg.warning { color: var(--warning); }
+.validation-msg.info { color: var(--text-light); }
+
+/* === BARRA PROGRESSO TEMPORALE === */
+.timeline-bar {
+    margin-top: 18px;
+    background: #edf0f4;
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+.timeline-label {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timeline-track {
+    height: 8px;
+    background: #dce1e7;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.timeline-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--accent));
+    border-radius: 4px;
+    transition: width 0.8s ease-in-out;
+}
+
+.timeline-detail {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-top: 6px;
+    text-align: center;
+}
+
+/* === RISULTATI === */
+.results-section {
+    margin-top: 22px;
+}
+
+.results-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: var(--shadow);
+    opacity: 1;
+}
+
+/* Classe per animazione fade-in */
+.results-card.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0%   { opacity: 0.1; }
+    100% { opacity: 1; }
+}
+
+.results-placeholder {
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.total-row {
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+.total-label {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    font-weight: 600;
+}
+
+.total-value {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 6px 0;
+    letter-spacing: -1px;
+}
+
+.total-gain {
+    font-size: 1.1rem;
+    color: var(--success);
+    font-weight: 700;
+}
+
+.loyalty-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #d4b85a);
+    color: #3d2e00;
+    padding: 5px 18px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.loyalty-badge.hidden { display: none; }
+
+.no-loyalty-msg {
+    display: inline-block;
+    background: var(--warning-bg);
+    color: var(--warning);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.no-loyalty-msg.hidden { display: none; }
+
+/* Dettaglio */
+.breakdown {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+}
+
+.breakdown h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    font-size: 0.9rem;
+}
+
+.breakdown-row.sub {
+    padding-left: 18px;
+    color: var(--text-light);
+    font-size: 0.82rem;
+}
+
+.breakdown-row .negative {
+    color: var(--danger);
+}
+
+.breakdown-row.separator {
+    border-top: 1px dashed var(--border);
+    margin-top: 6px;
+    padding-top: 10px;
+}
+
+.breakdown-row.total {
+    border-top: 2px solid var(--primary);
+    margin-top: 10px;
+    padding-top: 14px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary);
+}
+
+/* === DISCLAIMER === */
+.disclaimer {
+    margin-top: 28px;
+    margin-bottom: 36px;
+    padding: 16px 20px;
+    background: var(--accent-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.55;
+}
+
+.disclaimer strong {
+    color: var(--text);
+}
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 22px 20px;
+    font-size: 0.78rem;
+    color: var(--text-light);
+    border-top: 1px solid var(--border);
+}
+
+footer a {
+    color: var(--primary-light);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+    header { padding: 30px 16px 46px; }
+    header h1 { font-size: 1.7rem; }
+    header .subtitle { font-size: 0.9rem; }
+    .header-badge { font-size: 0.78rem; padding: 4px 12px; }
+
+    .rates-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .rate-card {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+        text-align: left;
+        gap: 14px;
+    }
+    .rate-card .period {
+        min-width: 80px;
+        margin-bottom: 0;
+    }
+    .rate-card .rate {
+        font-size: 1.8rem;
+    }
+    .rate-card .rate-label {
+        margin-top: 0;
+        margin-left: auto;
+    }
+
+    .calc-card, .results-card { padding: 22px 18px; }
+    .input-row { flex-direction: column; gap: 0; }
+    .total-value { font-size: 2.1rem; }
+
+    .rates-explanation { padding: 14px 16px; }
+}
+
+@media (min-width: 641px) {
+    .rate-card {
+        transition: transform 0.2s;
+    }
+    .rate-card:hover {
+        transform: translateY(-2px);
+    }
+}
