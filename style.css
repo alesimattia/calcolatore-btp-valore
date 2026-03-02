@@ -173,6 +173,23 @@ header .subtitle {
     font-weight: 700;
 }
 
+.official-link {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 0.82rem;
+    color: var(--text-light);
+}
+
+.official-link a {
+    color: var(--primary-light);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.official-link a:hover {
+    text-decoration: underline;
+}
+
 /* Spiegazione tassi */
 .rates-explanation {
     margin-top: 20px;
