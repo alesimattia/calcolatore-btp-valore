@@ -499,6 +499,51 @@ header .subtitle {
     color: var(--text);
 }
 
+/* === VANTAGGI === */
+.advantages-section {
+    margin-bottom: 36px;
+}
+
+.advantages-section h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.advantage-item {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 16px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.advantage-icon {
+    font-size: 1.3rem;
+    margin-bottom: 2px;
+}
+
+.advantage-item strong {
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+.advantage-item > span:last-child {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.45;
+}
+
 /* === FOOTER === */
 footer {
     text-align: center;
@@ -552,6 +597,8 @@ footer a:hover {
     .total-value { font-size: 2.1rem; }
 
     .rates-explanation { padding: 14px 16px; }
+
+    .advantages-grid { grid-template-columns: 1fr; }
 }
 
 @media (min-width: 641px) {
